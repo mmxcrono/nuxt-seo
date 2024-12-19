@@ -1,8 +1,13 @@
+<script setup lang="ts">
+const config = useRuntimeConfig();
+
+const cdn = config.public.cdnUrl;
+</script>
 <template>
   <header>
     <a href="#">
       <img
-        src="/images/linkedin-logo-svgrepo-com.svg"
+        :src="`${cdn}/images/linkedin-logo-svgrepo-com.svg`"
         alt="Home logo"
         width="120"
         height="75"
