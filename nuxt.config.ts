@@ -5,6 +5,13 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     minify: true,
+    publicAssets: [
+      {
+          baseURL: "images",
+          dir: "public/images",
+          maxAge: 60 * 60 * 24 * 365,
+      },
+    ],
   },
   css: ['~/assets/css/main.css'],
 })

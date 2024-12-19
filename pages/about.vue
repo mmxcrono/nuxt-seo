@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
-const title = 'Nuxt SEO Examples'
-const description = 'Nuxt SEO Examples'
+const title = 'Nuxt SEO - About'
+const description = 'About Nuxt SEO Examples'
 
 useSeoMeta({
   title,
