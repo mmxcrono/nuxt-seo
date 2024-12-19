@@ -1,0 +1,16 @@
+services:
+  nuxt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Map host port 3000 to container port 3000
+    volumes:
+      - .:/usr/src/app # Mount the local project directory to the container
+      - /usr/src/app/node_modules # Prevent node_modules from being overwritten
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+      - NITRO_PORT=3000 # Optional: If Nuxt needs a specific port variable
+    stdin_open: true # Keep the container interactive
+    tty: true
