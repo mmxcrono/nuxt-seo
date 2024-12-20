@@ -1,20 +1,23 @@
-# Use Node.js LTS as the base image
-FROM node:18
+# Build Stage
+FROM node:18 as build
 
-# Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Copy only the package.json and package-lock.json for dependency installation
 COPY package*.json ./
 
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the project files
 COPY . .
 
-# Expose the default Nuxt dev server port
+RUN npm run build
+
+# Production Stage
+FROM node:18
+
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app ./
+
 EXPOSE 3000
 
-# Command to run the development server
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]

@@ -24,4 +24,4 @@ logs
 !.env.example
 
 # SSL
-certs
+ssl
