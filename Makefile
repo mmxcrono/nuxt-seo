@@ -8,7 +8,16 @@ gen-dha:
 	mkdir -p nginx/ssl && openssl dhparam -out ./nginx/ssl/dhparam.pem 4096
 
 dev:
-	docker-compose up --build
+	docker compose up || true
+
+devd:
+	docker compose up -d
+
+down:
+	docker compose down
+
+build:
+	docker compose build --no-cache
 
 prod:
-	NODE_ENV=production docker-compose up --build
+	NODE_ENV=production docker compose up --build || true

@@ -14,7 +14,7 @@ services:
     tty: true
     command: >
       sh -c "
-        if [ \"$NODE_ENV\" = \"production\" ]; then
+        if [ \"${NODE_ENV:-development}\" = \"production\" ]; then
           npm run build && npm run preview;
         else
           npm run dev;
