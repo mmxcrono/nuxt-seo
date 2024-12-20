@@ -12,7 +12,14 @@ services:
       - NITRO_PORT=3000 # Optional: If Nuxt needs a specific port variable
     stdin_open: true # Keep the container interactive
     tty: true
-    command: npm run dev
+    command: >
+      sh -c "
+        if [ \"$NODE_ENV\" = \"production\" ]; then
+          npm run build && npm run preview;
+        else
+          npm run dev;
+        fi
+      "
 
   nginx:
     image: nginx:latest
